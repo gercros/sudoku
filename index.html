@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Sudoku solver!</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+
+		<script src="js/vendor/angular.min.js"></script>
+		<script src="js/main.js"></script>
+
+    </head>
+
+
+    <body ng-app="sudoku">
+
+		<h1 align="center">Solucion de sudokus!</h1>
+
+
+		<div align="center" ng-controller="main">
+			<a ng-click="logic.testSimple()">Example 1</a> |
+			<a ng-click="logic.testMedium()">Example 2</a> |
+			<a ng-click="logic.testHard()">Example 3</a> |
+			<a ng-click="logic.setUp()">Clean</a>
+		</div>
+
+		<div class="main" ng-controller="main">
+
+
+
+			<table class="juego">
+				<tr ng-repeat="y in long">
+					<td class="nuevepornueve" ng-repeat="x in long" >
+						<table>
+							<tr ng-repeat="suby in long">
+								<td ng-repeat="subx in long"  ng-class="{given: wasGiven(getInput()) }" x="{{x}}" y="{{y}}" subx="{{subx}}" suby="{{suby}}" box>
+
+								</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+
+			<div class="botones-Solucion">
+				<button class="btn btn-info" ng-click="logic.stopInput()">Frize Numbers</button>
+				<button class="btn btn-success" ng-click="logic.solve()">Solve</button>
+				<!--<button class="btn btn-success" ng-click="isSolved()">Esta resuelto ? </button>-->
+				<!--<button class="btn btn-info">Intentar de nuevo</button>-->
+				<button class="btn btn-danger" ng-click="logic.restart()">Restart</button>
+			</div>
+		</div>
+    </body>
+
+</html>
